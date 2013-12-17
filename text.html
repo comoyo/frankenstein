@@ -1,0 +1,19 @@
+<html>
+<script src="js/args.js"></script>
+<link rel="stylesheet" type="text/css" href="css/text.css">
+<body>
+<div id='container'></div>
+</body>
+
+<script>
+parameters = getUrlVars(); //which leads to:
+console.log(parameters['text']);
+var c = document.getElementById('container');
+var msg = document.createElement('div');
+var sz = parameters['height'] || 'h1';
+msg.innerHTML = '<' + sz + '>' + parameters['text'] + '</' + sz + '>';
+msg.setAttribute('id', 'letterpress');
+c.appendChild(msg);
+</script>
+
+</html>
