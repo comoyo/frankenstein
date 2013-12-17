@@ -10,7 +10,7 @@ text: \<widget name="git" filename="widget_file_name.html" parameters="a=url_esc
 
 For example the following chat item:
 
-<widget name="git" filename="text.html" parameters="text=hereGoesTheMessage&height=h1"\>
+\<widget name="git" filename="text.html" parameters="text=hereGoesTheMessage&height=h1"\>
 
 
 will be expand into following HTML sent to the client:
