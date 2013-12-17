@@ -1,0 +1,101 @@
+<html xmlns:ng="http://angularjs.org">>
+<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+<script src="js/args.js"></script>
+<link rel="stylesheet" type="text/css" href="css/todo.css">
+<body ng:app  style="border: none;">
+<div id='container'></div>
+
+<script>
+
+// Example: todo.html?partnerMsisdn=+4795078610&localMsisdn=+4795991569&uniqueId=22
+parameters = getUrlVars(); //which leads to:
+var localMsisdn = parameters['localMsisdn'];
+var partnerMsisdn = parameters['partnerMsisdn'];
+var uniqueId = parameters['uniqueId'];
+
+  function getToDoDataRef(uniqueId) {
+    var baseToDoUrl = 'https://widgetchat.firebaseio.com/conversations/';
+    var fullUrl = baseToDoUrl + generateChatKey(localMsisdn, partnerMsisdn) + "/todo/" + uniqueId;
+    return new Firebase(fullUrl);
+  }
+
+  function renderToDoList() {
+    var toDoRef = getToDoDataRef(uniqueId);
+
+    toDoRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      displayToDoItem(message.item, message.done, uniqueId, snapshot.name());
+    });
+
+    toDoRef.on('child_changed', function(snapshot) {
+      var message = snapshot.val();
+      updateToDoItem(message.done, uniqueId, snapshot.name());
+    });
+
+    var scrollToBottom = true;
+    toDoRef.on('value', function() {
+      if(scrollToBottom === true) {
+        $("html, body").scrollTop($(document).height());
+        scrollToBottom = false;
+      }
+    });
+    
+    var section = '<section class="todo">';
+    var todoTag = "<ul class='todo-list' id='todo_" + uniqueId + "' >";
+    var newItemTag = "<input type='text' id='container_" + uniqueId + "' placeholder='New item...'>";
+    $(section).append($(todoTag)).append($(newItemTag)).appendTo($('#container'));
+
+    $('#container_' + uniqueId).keypress(function (e) {
+      if (e.keyCode == 13) {
+        var item = $('#container_' + uniqueId).val();
+        toDoRef.push({item:item, done:false});
+        $('#container_' + uniqueId).val('');
+      }
+    });
+  }
+  function generateChatKey(localMsisdn, partnerMsisdn) {
+    if (localMsisdn < partnerMsisdn) {
+      return localMsisdn + '+' + partnerMsisdn;
+    }
+    return partnerMsisdn + '+' + localMsisdn;
+  }
+  function displayToDoItem(item, done, uniqueId, uniqueName) {
+    var todoItemContainer = "<li>";
+    var checkbox = '<input type="checkbox" id="' + uniqueName + '"';
+    var todoLabel = '<label class="toggle" for="' + uniqueName + '" />';
+
+    if (done === true) {
+      checkbox = checkbox + ' checked';
+    }
+    checkbox = checkbox + ' />';
+
+    $(todoItemContainer).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#todo_' + uniqueId));
+
+    $('#' + uniqueName).change(function (e) {
+      var isDone = this.checked;
+      var firebaseName = $(this).attr('id');
+      var singleToDoRef = getSingleToDoDataRef(uniqueId, firebaseName);
+      singleToDoRef.update({done:isDone});
+      singleToDoRef = null;
+    });
+  }
+
+  function updateToDoItem(done, uniqueId, uniqueName) {
+    $('#' + uniqueName).prop('checked', done);
+  }
+  function stripTags(content) {
+    return content.replace("<","&lt;").replace(">","&gt;");
+  }
+  function getSingleToDoDataRef(uniqueId, uniqueName) {
+    var baseToDoUrl = 'https://widgetchat.firebaseio.com/conversations/';
+    var fullUrl = baseToDoUrl + generateChatKey(localMsisdn, partnerMsisdn) + "/todo/" + uniqueId + "/" + uniqueName;
+    return new Firebase(fullUrl);
+  }
+
+renderToDoList();
+
+</script>
+</body>
+
+</html>

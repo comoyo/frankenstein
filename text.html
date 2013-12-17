@@ -1,7 +1,7 @@
 <html>
 <script src="js/args.js"></script>
 <link rel="stylesheet" type="text/css" href="css/text.css">
-<body>
+<body style="border: none;">
 <div id='container'></div>
 </body>
 
@@ -11,8 +11,9 @@ console.log(parameters['text']);
 var c = document.getElementById('container');
 var msg = document.createElement('div');
 var sz = parameters['height'] || 'h1';
+var id = parameters['id'] || 'three-d';
 msg.innerHTML = '<' + sz + '>' + parameters['text'] + '</' + sz + '>';
-msg.setAttribute('id', 'letterpress');
+msg.setAttribute('id', id);
 c.appendChild(msg);
 </script>
 
