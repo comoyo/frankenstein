@@ -6,7 +6,7 @@ Pile of htlm5 widgets for prototyping comm stuff.
 To use any of the widgets in this directory client should push the
 following item to the Firebase conversation:
 
-text:<widget name="git" filename="widget_file_name.html" parameters="a=url_escaped_value1&b=url_escaped_value2"\>
+text: \<widget name="git" filename="widget_file_name.html" parameters="a=url_escaped_value1&b=url_escaped_value2"\>
 
 For example the following chat item:
 
