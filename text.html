@@ -6,8 +6,9 @@
 </body>
 
 <script>
-parameters = getUrlVars(); //which leads to:
-console.log(parameters['text']);
+// get parameters including string to render and size of the font
+parameters = getUrlVars();
+// add some html to show the string
 var c = document.getElementById('container');
 var msg = document.createElement('div');
 var sz = parameters['height'] || 'h1';

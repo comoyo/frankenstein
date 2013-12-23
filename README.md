@@ -3,17 +3,28 @@ frankenstein
 
 Pile of htlm5 widgets for prototyping comm stuff.
 
-To use any of the widgets in this directory client should push the
-following item to the Firebase conversation:
+Here is the step by step guide on how to add yet another widget.
 
-text: \<widget name="git" filename="widget_file_name.html" parameters="a=url_escaped_value1&b=url_escaped_value2"\>
+1 - Add HTML page that will present the widget. This will be embedded in <iframe> from the chat page
+    Include js/args.js to parse the args being sent along
+2 - Add code to js/insert.js that will add JSON object to Firebase chat flow. This object
+    persists argumets to the page created in step 1.
+    Example that stores text string shown by text.html:
+    function ins_text(text             /* message */, 
+                      conversationRef  /* chat flow container persisted by Firebase */,
+                      localMsisdn,     /* msisdn of sender */
+                      partnerMsisdn    /* msisdn of receiver */ ) {
+              conversationRef.push({sentBy:localMsisdn, 
+                                    text:'<widget name="git" filename="text.html" parameters="text=' 
+                                    + escape(text) + '&height=h1"/>'});
+    } 
 
-For example the following chat item:
+3 - Add menu item to menu.part that will in turn call JS created in 2
+    example:
+    <li><a href="javascript:ins_text('OK', conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">OK</a></li>
+    Note: conversationRef, localMsisdn, partnerMsisdn - all are coming from chat.html page in heroku repo
 
-\<widget name="git" filename="text.html" parameters="text=hereGoesTheMessage&height=h1"\>
+4 - Push to Git and the code is ready for test
 
+For more details check out text.html that renders static text and todo.html that shows the ToDo list using angular and own persistancy area in Firebase.
 
-will be expand into following HTML sent to the client:
-
-
- <iframe style="height: 100%;width: 100%" frameborder="0" scrolling="yes" src="/waps/comoyo/frankenstein/master/text.html?text=hereGoesTheMessage&height=h1"
