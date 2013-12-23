@@ -3,5 +3,6 @@
       <li><a href="javascript:ins_wow(conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">WOW</a></li>
       <li><a href="javascript:ins_todo(conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">TO-DO</a></li>
       <li><a href="javascript:ins_text('OK', conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">OK</a></li>
+      <li><a href="javascript:ins_text('God Jul', conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">God Jul</a></li>
    </ul>
 </nav>
