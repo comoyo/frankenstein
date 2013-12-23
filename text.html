@@ -12,7 +12,7 @@ var c = document.getElementById('container');
 var msg = document.createElement('div');
 var sz = parameters['height'] || 'h1';
 var id = parameters['id'] || 'three-d';
-msg.innerHTML = '<' + sz + '>' + parameters['text'] + '</' + sz + '>';
+msg.innerHTML = '<' + sz + '>' + unescape(parameters['text']) + '</' + sz + '>';
 msg.setAttribute('id', id);
 c.appendChild(msg);
 </script>
