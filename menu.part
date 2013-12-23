@@ -1,5 +1,6 @@
 <nav id="menu">
    <ul>
+      <li><a href="javascript:$('#menu').trigger('close');"></a></li>
       <li><a href="javascript:ins_wow(conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">WOW</a></li>
       <li><a href="javascript:ins_todo(conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">TO-DO</a></li>
       <li><a href="javascript:ins_text('OK', conversationRef, localMsisdn, partnerMsisdn);$('#menu').trigger('close');">OK</a></li>
