@@ -31,7 +31,7 @@ function ins_text(text, // chat's text - store it!
     } 
 ```
 
-3 - Add menu corresponding menu item.
+3 - Add corresponding menu item to menu.part.
 -------------------------------------
 Append entry to menu.part that will in turn call JS created in 2
     
