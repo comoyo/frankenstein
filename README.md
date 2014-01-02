@@ -33,7 +33,7 @@ function ins_text(text, // chat's text - store it!
 
 3 - Add corresponding menu item to menu.part.
 -------------------------------------
-Append entry to menu.part that will in turn call JS created in 2
+Append entry to menu.part. Entry has description and code section that will call function  created in step 2 effectively adding instance of the widget to the chat flow in Firebase.
     
 Example of menu entry that will add "OK" message to the chat:
 ```html
