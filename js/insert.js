@@ -9,3 +9,6 @@ function ins_todo(conversationRef, localMsisdn, partnerMsisdn) {
         "&uniqueId=" + new Date().getTime();
      conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="todo.html" parameters="' + params + '"/>'});
 }
+function ins_plain_text(txt, conversationRef, localMsisdn, partnerMsisdn) {
+     conversationRef.push({sentBy:localMsisdn, text:txt});
+}
