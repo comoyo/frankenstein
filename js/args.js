@@ -10,3 +10,8 @@ function getUrlVars() { // Read a page's GET URL variables and return them as an
     return vars;
 }
 parameters = getUrlVars();
+// hack to say frankenstein widget is loaded
+if (typeof window.talk != "undefined") {
+    window.talk.viewLoadFinished(uniqueId);
+}
+
