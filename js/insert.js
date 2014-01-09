@@ -1,12 +1,13 @@
 function ins_wow(conversationRef, localMsisdn, partnerMsisdn) {
-     conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="text.html" parameters="text=WOW&height=h1"/>'});
+    ins_wow('WOW', conversationRef, localMsisdn, partnerMsisdn);
 }
 function ins_text(text, conversationRef, localMsisdn, partnerMsisdn) {
-     conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="text.html" parameters="text=' + escape(text) + '&height=h1"/>'});
+     conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="text.html" parameters="text=' + escape(text) + "&id=" + new Date().getTime() + '&height=h1"/>'});
 }
 function ins_todo(conversationRef, localMsisdn, partnerMsisdn) {
     var params = "partnerMsisdn=+" + partnerMsisdn.trim() + "&localMsisdn=+" + localMsisdn.trim() + 
         "&uniqueId=" + new Date().getTime();
+     params += "&id=" + new Date().getTime();
      conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="todo.html" parameters="' + params + '"/>'});
 }
 function ins_plain_text(txt, conversationRef, localMsisdn, partnerMsisdn) {
