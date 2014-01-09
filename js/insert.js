@@ -1,5 +1,5 @@
 function ins_wow(conversationRef, localMsisdn, partnerMsisdn) {
-    ins_wow('WOW', conversationRef, localMsisdn, partnerMsisdn);
+    ins_text('WOW', conversationRef, localMsisdn, partnerMsisdn);
 }
 function ins_text(text, conversationRef, localMsisdn, partnerMsisdn) {
      conversationRef.push({sentBy:localMsisdn, text:'<widget name="git" filename="text.html" parameters="text=' + escape(text) + "&id=" + new Date().getTime() + '&height=h1"/>'});
