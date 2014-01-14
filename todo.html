@@ -61,6 +61,8 @@ var uniqueId = parameters['uniqueId'];
     return partnerMsisdn + '+' + localMsisdn;
   }
   function displayToDoItem(item, done, uniqueId, uniqueName) {
+    var newSection = '<section class="todo">';
+    var todo = "<ul class='todo-list' id='todo_" + uniqueId + "' >";
     var todoItemContainer = "<li>";
     var checkbox = '<input type="checkbox" id="' + uniqueName + '"';
     var todoLabel = '<label class="toggle" for="' + uniqueName + '" />';
@@ -70,7 +72,7 @@ var uniqueId = parameters['uniqueId'];
     }
     checkbox = checkbox + ' />';
 
-    $(section).append($(todoTag)).append($(todoItemContainer)).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#container'));
+    $(section).append($(todo)).append($(todoItemContainer)).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#container'));
 
     $('#' + uniqueName).change(function (e) {
       var isDone = this.checked;
