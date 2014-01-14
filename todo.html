@@ -70,7 +70,7 @@ var uniqueId = parameters['uniqueId'];
     }
     checkbox = checkbox + ' />';
 
-    $(todoItemContainer).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#todo_' + uniqueId));
+    $(section).append($(todoTag)).append($(todoItemContainer)).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#container'));
 
     $('#' + uniqueName).change(function (e) {
       var isDone = this.checked;
