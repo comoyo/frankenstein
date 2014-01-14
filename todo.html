@@ -8,7 +8,7 @@
 
 <script>
 
-// Example: todo.html?partnerMsisdn=+4795078610&localMsisdn=+4795991569&uniqueId=22
+// Example: todo.html?partnerMsisdn=+4795078610&localMsisdn=+4795991569&uniqueId=1389704265052
 parameters = getUrlVars(); //which leads to:
 var localMsisdn = parameters['localMsisdn'];
 var partnerMsisdn = parameters['partnerMsisdn'];
@@ -72,7 +72,7 @@ var uniqueId = parameters['uniqueId'];
     }
     checkbox = checkbox + ' />';
 
-    $(section).append($(todo)).append($(todoItemContainer)).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#container'));
+    $(newSection).append($(todo)).append($(todoItemContainer)).append($(checkbox)).append($(todoLabel)).append(stripTags(item)).appendTo($('#container'));
 
     $('#' + uniqueName).change(function (e) {
       var isDone = this.checked;
