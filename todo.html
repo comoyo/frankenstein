@@ -77,7 +77,7 @@ var uniqueId = parameters['uniqueId'];
     $('#' + uniqueName).change(function (e) {
       var isDone = this.checked;
       var firebaseName = $(this).attr('id');
-      var singleToDoRef = getSingleToDoDataRef(uniqueId, firebaseName);
+      var singleToDoRef = getSingleToDoDataRef(uniqueId, uniqueName);
       singleToDoRef.update({done:isDone});
       singleToDoRef = null;
     });
