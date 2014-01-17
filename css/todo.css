@@ -7,6 +7,10 @@ input[type=text] {
   margin-left: 50px;
 }
 
+body {
+  margin: 0 auto;
+}
+
 
 ul, li {
     margin: 0;
@@ -40,7 +44,7 @@ ul, li {
 
 .todo-list li {
     position: relative;
-    padding: 7px 15px 7px 50px;
+    padding: 2px 15px 2px 50px;
     line-height: 21px;
     font-size: 12px;
     color: #8b8f97;
