@@ -24,7 +24,7 @@ function ins_call_me(conversationRef, localMsisdn, partnerMsisdn) {
     var params = ' id="' + new Date().getTime() +'"';
     conversationRef.push({sentBy:localMsisdn, text:'<widget name="callme" ' + params + '/>'});
 }
-function ins_todo_2(conversationRef, localMsisdn, partnerMsisdn) {
+/*function ins_todo_2(conversationRef, localMsisdn, partnerMsisdn) {
     var params = ' id="' + new Date().getTime() +'"';
     conversationRef.push({sentBy:localMsisdn, text:'<widget name="todo" ' + params + '/>'});
-}
+}*/
