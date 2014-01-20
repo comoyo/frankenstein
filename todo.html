@@ -12,7 +12,7 @@
 parameters = getUrlVars(); //which leads to:
 var localMsisdn = parameters['localMsisdn'];
 var partnerMsisdn = parameters['partnerMsisdn'];
-var uniqueId = parameters['uniqueId'];
+var uniqueId = parameters['id'];
   function getToDoDataRef(uniqueId) {
     var baseToDoUrl = 'https://widgetchat.firebaseio.com/conversations/';
     var fullUrl = baseToDoUrl + generateChatKey(localMsisdn, partnerMsisdn) + "/todo/" + uniqueId;
